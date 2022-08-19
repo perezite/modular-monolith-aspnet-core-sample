@@ -1,24 +1,29 @@
-﻿using App.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Module.Catalog.Core.Interfaces;
+using Module.Catalog.Core.Services;
+using Module.Catalog.Infrastructure.Persistence;
 
-namespace App.DependencyInjection
+namespace App.Dependencies
 {
     public static class DependencyRegistration
     {
-        public static void RegisterDependencies(this IServiceCollection services, IConfiguration config)
+        public static void AddDependencies(this IServiceCollection services, IConfiguration config)
         {
-            services.AddSharedInfrastructure(config);
+            services
+                .AddDatabaseContext<CatalogDbContext>(config)
+                .AddScoped<ICatalogDbContext>(provider => provider.GetService<CatalogDbContext>())
+                .AddScoped<IBrandService, BrandService>();
         }
 
-        private static IServiceCollection AddSharedInfrastructure(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddWebApiControllers(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddControllers()
-            .ConfigureApplicationPartManager(manager =>
-            {
-                manager.FeatureProviders.Add(new AppControllerFeatureProvider());
-            });
+                .ConfigureApplicationPartManager(manager =>
+                {
+                    manager.FeatureProviders.Add(new AppControllerFeatureProvider());
+                });
 
             return services;
         }

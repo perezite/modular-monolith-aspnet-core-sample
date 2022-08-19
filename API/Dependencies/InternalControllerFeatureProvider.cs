@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using System;
 using System.Reflection;
 
-namespace App.DependencyInjection
+namespace App.Dependencies
 {
     internal class AppControllerFeatureProvider : ControllerFeatureProvider
     {
