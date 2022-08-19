@@ -10,9 +10,9 @@ namespace Module.Catalog.Infrastructure.Extensions
     {
         public static IServiceCollection AddCatalogInfrastructure(this IServiceCollection services, IConfiguration config)
         {
-            services
-                .AddDatabaseContext<CatalogDbContext>(config)
-                .AddScoped<ICatalogDbContext>(provider => provider.GetService<CatalogDbContext>());
+            //services
+            //    .AddDatabaseContext<CatalogDbContext>(config)
+            //    .AddScoped<ICatalogDbContext>(provider => provider.GetService<CatalogDbContext>());
             return services;
         }
     }

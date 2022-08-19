@@ -1,3 +1,4 @@
+using App.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,7 +8,7 @@ using Microsoft.OpenApi.Models;
 using Module.Catalog;
 using Shared.Infrastructure.Extensions;
 
-namespace API
+namespace App
 {
     public class Startup
     {
@@ -21,8 +22,7 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddSharedInfrastructure(Configuration);
-            // services.AddCatalogModule(Configuration);
+            services.RegisterDependencies(Configuration);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });

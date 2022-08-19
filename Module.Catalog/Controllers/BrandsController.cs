@@ -2,6 +2,7 @@
 using Module.Catalog.Api.Dtos;
 using Module.Catalog.Core.Entities;
 using Module.Catalog.Core.Interfaces;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Module.Catalog.Api.Controllers
@@ -14,24 +15,30 @@ namespace Module.Catalog.Api.Controllers
 
         public BrandsController(IBrandService brandService)
         {
-            this._brandService = brandService;
+            _brandService = brandService;
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAll()
         {
-            await Task.CompletedTask;
-            return Ok();
+            var brands = await _brandService.GetAllAsync();
+            var brandDtos = brands.Select(x => new BrandDto
+            {
+                Name = x.Name,
+                Detail = x.Detail
+            });
+
+            return Ok(brandDtos);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(AddBrandDto dto)
+        public async Task<IActionResult> Post(BrandDto brandDto)
         {
             var brand = new Brand
             {
-                Name = dto.Name,
-                Detail = dto.Detail
+                Name = brandDto.Name,
+                Detail = brandDto.Detail
             };
 
             await _brandService.AddAsync(brand);

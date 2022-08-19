@@ -1,6 +1,9 @@
 ﻿using Module.Catalog.Core.Entities;
 using Module.Catalog.Core.Interfaces;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Module.Catalog.Core.Services
 {
@@ -13,11 +16,16 @@ namespace Module.Catalog.Core.Services
             this._dbContext = dbContext;
         }
 
-        async Task<int> IBrandService.AddAsync(Brand brand)
+        public async Task<int> AddAsync(Brand brand)
         {
             await _dbContext.Brands.AddAsync(brand);
             await _dbContext.SaveChangesAsync();
             return brand.Id;
+        }
+
+        public async Task<List<Brand>> GetAllAsync()
+        {
+            return await _dbContext.Brands.OrderBy(x => x.Id).ToListAsync();
         }
     }
 }
