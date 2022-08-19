@@ -1,9 +1,6 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Module.Catalog.Api.Dtos;
-using Module.Catalog.Core.Commands.Register;
 using Module.Catalog.Core.Entities;
-using Module.Catalog.Core.Queries.GetAll;
 using System.Threading.Tasks;
 
 namespace Module.Catalog.Api.Controllers

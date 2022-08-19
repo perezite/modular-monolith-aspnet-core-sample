@@ -1,4 +1,7 @@
-﻿namespace Module.Catalog.Api.Interfaces
+﻿using Module.Catalog.Core.Entities;
+using System.Threading.Tasks;
+
+namespace Module.Catalog.Api.Interfaces
 {
     public interface IBrandService
     {
