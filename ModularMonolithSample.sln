@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{28C3CF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{0EB04608-0D45-4641-9BAF-BF9C151EAED0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Person", "Person", "{2E182E4D-5FFB-4547-826A-8E17EA552185}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "People", "People", "{2E182E4D-5FFB-4547-826A-8E17EA552185}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.Catalog.Api", "Module.Catalog\Module.Catalog.Api.csproj", "{D30B25FC-08E8-4348-9725-2DFD80E70F05}"
 EndProject
@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.Catalog.Core", "Modu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.Catalog.Infrastructure", "Module.Catalog.Infrastructure\Module.Catalog.Infrastructure.csproj", "{2E260F0B-E19F-4FFE-B234-03310859AC51}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.People", "Module.People\Module.People.csproj", "{7AD042E7-763A-488E-98FE-DC17EF980116}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.People.Api", "Module.People\Module.People.Api.csproj", "{7AD042E7-763A-488E-98FE-DC17EF980116}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.People.Core", "Module.People.Core\Module.People.Core.csproj", "{DB610419-A95A-4760-BFB4-3E6B2B763ADE}"
 EndProject

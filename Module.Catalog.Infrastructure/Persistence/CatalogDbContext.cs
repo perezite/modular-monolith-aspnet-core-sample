@@ -8,7 +8,7 @@ namespace Module.Catalog.Infrastructure.Persistence
 {
     public class CatalogDbContext : ModuleDbContext, ICatalogDbContext
     {
-        public CatalogDbContext(DbContextOptions options) : base(options)
+        public CatalogDbContext(DbContextOptions<CatalogDbContext> options) : base(options)
         {
         }
 

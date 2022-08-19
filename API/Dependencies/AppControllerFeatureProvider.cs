@@ -9,22 +9,14 @@ namespace App.Dependencies
     {
         protected override bool IsController(TypeInfo typeInfo)
         {
-            if (!typeInfo.IsClass)
+            if (!typeInfo.IsClass ||
+                typeInfo.IsAbstract ||
+                typeInfo.ContainsGenericParameters ||
+                typeInfo.IsDefined(typeof(NonControllerAttribute)))
             {
                 return false;
             }
-            if (typeInfo.IsAbstract)
-            {
-                return false;
-            }
-            if (typeInfo.ContainsGenericParameters)
-            {
-                return false;
-            }
-            if (typeInfo.IsDefined(typeof(NonControllerAttribute)))
-            {
-                return false;
-            }
+
             return typeInfo.Name.EndsWith("Controller", StringComparison.OrdinalIgnoreCase) ||
                     typeInfo.IsDefined(typeof(ControllerAttribute));
         }

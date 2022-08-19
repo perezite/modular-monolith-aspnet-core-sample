@@ -4,6 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Module.Catalog.Core.Interfaces;
 using Module.Catalog.Core.Services;
 using Module.Catalog.Infrastructure.Persistence;
+using Module.People.Core.Interfaces;
+using Module.People.Core.Services;
+using Module.People.Infrastructure.Persistence;
 
 namespace App.Dependencies
 {
@@ -13,7 +16,9 @@ namespace App.Dependencies
         {
             services
                 .AddModuleDbContext<ICatalogDbContext, CatalogDbContext>(config)
-                .AddScoped<IBrandService, BrandService>();
+                .AddModuleDbContext<IPersonDbContext, PersonDbContext>(config)
+                .AddScoped<IBrandService, BrandService>()
+                .AddScoped<IPersonService, PersonService>();
         }
 
         public static IServiceCollection AddWebApiControllers(this IServiceCollection services, IConfiguration configuration)
