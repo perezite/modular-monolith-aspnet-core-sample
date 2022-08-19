@@ -41,9 +41,9 @@ namespace Module.Catalog.Api.Controllers
                 Detail = brandDto.Detail
             };
 
-            await _brandService.AddAsync(brand);
+            var id = await _brandService.AddAsync(brand);
 
-            return Ok();
+            return Ok(id);
         }
     }
 }

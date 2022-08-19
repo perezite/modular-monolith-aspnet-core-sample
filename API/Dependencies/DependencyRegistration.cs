@@ -12,8 +12,7 @@ namespace App.Dependencies
         public static void AddDependencies(this IServiceCollection services, IConfiguration config)
         {
             services
-                .AddDatabaseContext<CatalogDbContext>(config)
-                .AddScoped<ICatalogDbContext>(provider => provider.GetService<CatalogDbContext>())
+                .AddModuleDbContext<ICatalogDbContext, CatalogDbContext>(config)
                 .AddScoped<IBrandService, BrandService>();
         }
 
@@ -28,7 +27,16 @@ namespace App.Dependencies
             return services;
         }
 
-        private static IServiceCollection AddDatabaseContext<T>(this IServiceCollection services, IConfiguration config) where T : DbContext
+        private static IServiceCollection AddModuleDbContext<TDbContextInterface, TDbContext>(this IServiceCollection services, IConfiguration config) where TDbContext : DbContext, TDbContextInterface where TDbContextInterface : class
+        {
+            services
+                .AddDbContext<TDbContext>(config)
+                .AddScoped<TDbContextInterface>(provider => provider.GetService<TDbContext>());
+
+            return services;
+        }
+
+        private static IServiceCollection AddDbContext<T>(this IServiceCollection services, IConfiguration config) where T : DbContext
         {
             var connectionString = config.GetConnectionString("Default");
             services.AddMSSQL<T>(connectionString);
