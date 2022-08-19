@@ -9,6 +9,6 @@ namespace Module.Catalog.Core.Abstractions
     {
         public DbSet<Brand> Brands { get; set; }
 
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        Task<int> SaveChangesAsync();
     }
 }
