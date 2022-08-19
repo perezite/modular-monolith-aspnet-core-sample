@@ -1,6 +1,5 @@
-﻿using Module.Catalog.Api.Interfaces;
-using Module.Catalog.Core.Abstractions;
-using Module.Catalog.Core.Entities;
+﻿using Module.Catalog.Core.Entities;
+using Module.Catalog.Core.Interfaces;
 using System.Threading.Tasks;
 
 namespace Module.Catalog.Core.Services
@@ -14,7 +13,7 @@ namespace Module.Catalog.Core.Services
             this._dbContext = dbContext;
         }
 
-        public async Task<int> Add(Brand brand)
+        async Task<int> IBrandService.AddAsync(Brand brand)
         {
             await _dbContext.Brands.AddAsync(brand);
             await _dbContext.SaveChangesAsync();

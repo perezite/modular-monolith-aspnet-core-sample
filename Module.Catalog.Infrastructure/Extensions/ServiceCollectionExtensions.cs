@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Module.Catalog.Core.Abstractions;
+using Module.Catalog.Core.Interfaces;
 using Module.Catalog.Infrastructure.Persistence;
 using Shared.Infrastructure.Extensions;
 

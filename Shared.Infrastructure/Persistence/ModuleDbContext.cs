@@ -22,9 +22,9 @@ namespace Shared.Infrastructure.Persistence
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
         }
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        public async Task<int> SaveChangesAsync()
         {
-            return (await base.SaveChangesAsync(true, cancellationToken));
+            return await base.SaveChangesAsync();
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using Module.Catalog.Core.Entities;
 using System.Threading.Tasks;
 
-namespace Module.Catalog.Api.Interfaces
+namespace Module.Catalog.Core.Interfaces
 {
     public interface IBrandService
     {
-        Task<int> Add(Brand brand);
+        Task<int> AddAsync(Brand brand);
     }
 }

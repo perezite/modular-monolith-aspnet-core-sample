@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Module.Catalog.Core.Entities;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace Module.Catalog.Core.Abstractions
+namespace Module.Catalog.Core.Interfaces
 {
     public interface ICatalogDbContext
     {
